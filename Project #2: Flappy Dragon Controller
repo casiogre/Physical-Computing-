@@ -1,0 +1,34 @@
+// set pin number for the button
+const int leftButton = 4;
+
+
+void setup() {
+  // initialize the button input
+  pinMode(mouseButton, INPUT);
+  
+  // initialize mouse control:
+  Mouse.begin();
+}
+
+void loop() {
+  // read the button
+  int clickState = digitalRead(mouseButton);
+
+
+  // if the mouse button is pressed
+  if (clickState == HIGH) {
+    // if the mouse is not pressed, press it:
+    if (!Mouse.isPressed(MOUSE_LEFT)) {
+      Mouse.press(MOUSE_LEFT);
+    }
+  }
+  // else the mouse button is not pressed
+  else {
+    // if the mouse is pressed, release it:
+    if (Mouse.isPressed(MOUSE_LEFT)) {
+      Mouse.release(MOUSE_LEFT);
+    }
+  }
+
+
+}
